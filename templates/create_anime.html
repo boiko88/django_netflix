@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="main">
+  <form class="text" method="post">
+    <h1 class="big-text">ADD A NEW ANIME:</h1>
+    {% csrf_token %}
+    {% comment %} {{ form.as_p }} {% endcomment %}
+
+    <label class="label">{{ form.eng_name.label }}:</label>
+    <h3 class="form-input">{{ form.eng_name }}</h3>
+
+    <label class="label">{{ form.director_name.label }}:</label>
+    <h3 class="form-input">{{ form.director_name }}</h3>
+
+    <label class="label">{{ form.release_year.label }}:</label>
+    <h3 class="form-input">{{ form.release_year }}</h3>
+
+    <label class="label">{{ form.episodes_number.label }}:</label>
+    <h3 class="form-input">{{ form.episodes_number }}</h3>
+
+    <label class="label">{{ form.is_based_on_manga.label }}:</label>
+    <h3 class="form-input">{{ form.is_based_on_manga }}</h3>
+    <div class="button-container">
+      <button onclick="location.href='{% url 'home' %}'" class='buttons-red'>Back</button></td>
+      <button class="buttons-red" type="submit">Create</button>
+    </div>
+  </form>
+</div>
+
+{% include 'footer.html' %}
+
+{% endblock %}
+

@@ -1,0 +1,62 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="main">
+<div class="my-body text-center">
+  <h2 class="big-text">SEARCH RESULTS FOR "{{ request.GET.query }}"</h2>
+  {% if animes %}
+  <table class="container">
+    <thead>
+      <tr>
+        <th><h1>Name</h1></th>
+        <th><h1>Director's Name</h1></th>
+        <th><h1>Release Year</h1></th>
+        <th><h1>Number of Episodes</h1></th>
+        <th><h1>Based on Manga</h1></th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for anime in animes %}
+      <tr class="white-text">
+       <td class="white-text">{{ anime.eng_name }}</td>
+       <td class="white-text">{{ anime.director_name }}</td>
+       <td class="white-text">{{ anime.release_year }}</td>
+       <td class="white-text">{{ anime.episodes_number }}</td>
+       <td class="white-text">{{ anime.is_based_on_manga }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+      </div>
+      <button onclick="location.href='{% url 'home' %}'" class='buttons-red'>Back</button>
+    </div>
+    
+
+  {% else %}
+    <p class="text">No results found</p>
+    <td><button onclick="location.href='{% url 'home' %}'" class='buttons-red'>Back</button></td>
+  {% endif %}
+  <!--Paginator-->
+  {% if is_paginated %}
+    <div class="d-flex justify-content-center">
+      <span class="step-links">
+        {% if page_obj.has_previous %}
+          <a href="?query={{ request.GET.query }}&page={{ page_obj.previous_page_number }}">&laquo; previous</a>
+        {% endif %}
+        <span class="current-page">
+          Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+        {% if page_obj.has_next %}
+          <a href="?query={{ request.GET.query }}&page={{ page_obj.next_page_number }}">next &raquo;</a>
+        {% endif %}
+      </span>
+    </div>
+  {% endif %}
+</div>
+</div>
+
+{% include 'footer.html' %}
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="main">
+  {% comment %} <h2 class="text">Register</h2> {% endcomment %}
+  <form class="text" method="post">
+    {% csrf_token %}
+
+    <div class="form-group">
+
+      <label class="label">{{ form.username.label }}</label>
+      <h3 class="form-input">{{ form.username }}</h3>
+      
+    </div>
+
+    <div class="form-group">
+      
+
+      <label class="label">{{ form.email.label }}</label>
+      <h3 class="form-input">{{ form.email }}</h3>
+      
+    </div>
+    <a href="" target="_blank" id="ytb">
+      <i class="fa fa-question" title="Your password must contain at least 8 characters.
+Your password can't be a commonly used password.
+Your password can't be entirely numeric.
+Your password can't be too similar to your other personal information.
+      "></i>
+    </a>
+    <label class="label">{{ form.password1.label }}</label>
+    <h3 class="form-input">{{ form.password1 }}</h3>
+    <label class="label">{{ form.password2.label }}</label>
+    
+    <h3 class="form-input">{{ form.password2 }}</h3>
+    <div class="button-container">
+      
+      <button onclick="location.href='{% url 'home' %}'" class='buttons-red'>Back</button>
+      <button class="buttons-red" type="submit">Register</button>
+    </div>
+    
+  </form>
+</div>
+
+
+
+{% include 'footer.html' %}
+
+{% endblock %}

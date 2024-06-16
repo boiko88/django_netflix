@@ -1,0 +1,99 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://kit.fontawesome.com/bc3a1796c2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" />
+  </head>
+  <body>
+    <div class="navbar">
+    <img class="logo" src="{% static 'images/logo.png' %}" alt="Logo">
+    {% if user.is_authenticated %}
+      <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="buttons-red">Logout</button>
+      </form>
+    {% else %}
+      <li class="buttons-red" onclick="location.href='{% url 'sign_in' %}'">Sign In</li>
+    {% endif %}
+    </div>
+    
+    <div class="main">
+      
+      <div class="area">
+        {% if user.is_authenticated %}
+          <h2 class="big-text">Hello {{ user.username.title }}!</h2>
+        {% endif %}
+
+        {% for message in messages %}
+          <h3 class="white-text">{{message}}</h3>
+        {% endfor %}
+
+        <h1 class="big-text">CHECK YOUR ANIME LIST</h1>
+        <div class="box-search">
+          <form method="get" action="{% url 'anime_search' %}">
+            <input type="text" class="input" name="query" onmouseout="this.value = ''; this.blur();">
+          </form>
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="container1">
+          <table class="container">
+            <thead>
+              <tr>
+                <th><h1>Name</h1></th>
+                <th><h1>Director's Name</h1></th>
+                <th><h1>Release Year</h1></th>
+                <th><h1>Number of Episodes</h1></th>
+                <th><h1>Based on Manga</h1></th>
+              </tr>
+            </thead>
+            
+              {% if animes %}
+              {% for anime in animes %}
+                <tr class="white-text">
+                  <td>{{ anime.eng_name }}</td>
+                  <td>{{ anime.director_name }}</td>
+                  <td>{{ anime.release_year }}</td>
+                  <td>{{ anime.episodes_number }}</td>
+                  <td>{{ anime.is_based_on_manga }}</td>
+                  <td><button type="button" class='buttons-update' onclick="location.href='{% url 'update_anime' anime.pk %}'">Update</button></td>
+                  <td><button class='buttons-red' onclick="return confirm('Are you sure you want to delete this anime?') ? location.href='{% url 'delete_anime' anime.pk %}' : false;">Delete</button></td>
+                </tr>
+                <tbody>
+              {% endfor %}
+            {% else %}
+              <tr><td colspan="7">No animes created yet.</td></tr>
+            {% endif %}
+            
+            
+          </table>
+          
+          <div class="image-container">
+          <img class="logo-right" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png">
+          <button class="centered-button" onclick="location.href='{% url 'create_anime' %}'">Add Anime</button>
+        </div>
+            </tbody>
+        </div>
+      <div class="container1">
+          <div class="image">
+    <img class="logo-left" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile.png">
+          </div>
+          <div class="text">
+              <h1 class="big-text-center">THIS DATA WILL BE SAVED</h1>
+            </div>
+        </div>
+
+        {% include "footer.html" %}
+        
+  </body>
+</html>

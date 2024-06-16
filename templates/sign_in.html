@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="main">
+  <form class="text" method="post">
+    <h2 class="big-text">SIGN IN</h2>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br>
+    <div class="button-container">
+      <button onclick="location.href='{% url 'home' %}'" class='buttons-red'>Back</button>
+      <button class="buttons-red" type="submit">Sign In</button>
+    </div>
+    <br>
+    <h2 class="text-big">DON'T HAVE AN ACCOUNT?</h2>
+    <a class="link-text" href="{% url 'register' %}">REGISTER!</a>
+  </form>
+</div>
+
+{% include 'footer.html' %}
+
+{% endblock %}
+  
+
