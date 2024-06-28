@@ -1,11 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView, ListView
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-# from django.http import HttpResponseRedirect
-# from django.urls import reverse
 from django.db.models import Q
-from django.contrib.auth import authenticate, login, logout
-# from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.views import LogoutView
@@ -42,6 +39,7 @@ class TestPageView(TemplateView):
         return context
 
 
+# This function writes all the changes in a CSV file
 def log_to_csv(action_phrase, file_name='user_log.csv'):
     now = datetime.now()
     date_string = now.strftime("%Y-%m-%d")
@@ -166,6 +164,7 @@ def sign_in(request):
     return render(request, 'sign_in.html', {'form': form})
 
 
+# Logout
 class CustomLogoutView(LogoutView):
     def get_success_url(self):
         return reverse_lazy('home')
