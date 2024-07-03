@@ -26,7 +26,6 @@
     </div>
     
     <div class="main">
-      
       <div class="area">
         {% if user.is_authenticated %}
           <h2 class="big-text">Hello {{ user.username.title }}!</h2>
@@ -46,6 +45,7 @@
       </div>
     </div>
     </div>
+    
     <div class="container1">
           <table class="container">
             <thead>
@@ -57,7 +57,6 @@
                 <th><h1>Based on Manga</h1></th>
               </tr>
             </thead>
-            
               {% if animes %}
               {% for anime in animes %}
                 <tr class="white-text">
@@ -74,26 +73,23 @@
             {% else %}
               <tr><td colspan="7">No animes created yet.</td></tr>
             {% endif %}
-            
-            
           </table>
-          
           <div class="image-container">
           <img class="logo-right" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png">
           <button class="centered-button" onclick="location.href='{% url 'create_anime' %}'">Add Anime</button>
         </div>
             </tbody>
         </div>
+
       <div class="container1">
           <div class="image">
-    <img class="logo-left" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile.png">
+            <img class="logo-left" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile.png">
           </div>
           <div class="text">
               <h1 class="big-text-center">THIS DATA WILL BE SAVED</h1>
-            </div>
-        </div>
+          </div>
+      </div>
 
         {% include "footer.html" %}
-        
   </body>
 </html>

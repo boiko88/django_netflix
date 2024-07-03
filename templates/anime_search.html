@@ -26,18 +26,17 @@
        <td class="white-text">{{ anime.episodes_number }}</td>
        <td class="white-text">{{ anime.is_based_on_manga }}</td>
       </tr>
-    </tbody>
     {% endfor %}
+   </tbody>
   </table>
-      </div>
+    </div>
       <button onclick="location.href='{% url 'home' %}'" class='buttons-red'>Back</button>
     </div>
-    
-
   {% else %}
     <p class="text">No results found</p>
     <td><button onclick="location.href='{% url 'home' %}'" class='buttons-red'>Back</button></td>
   {% endif %}
+  
   <!--Paginator-->
   {% if is_paginated %}
     <div class="d-flex justify-content-center">
