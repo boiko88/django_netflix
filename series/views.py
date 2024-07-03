@@ -26,17 +26,6 @@ class HomePageView(TemplateView):
             animes = Anime.objects.none()
         context['animes'] = animes
         return context
-    
-
-class TestPageView(TemplateView):
-    template_name = 'test_page.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        animes = Anime.objects.all()
-        context['animes'] = animes
-        context['form'] = AnimeForm()
-        return context
 
 
 # This function writes all the changes in a CSV file
