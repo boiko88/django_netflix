@@ -24,7 +24,16 @@ class HomePageView(TemplateView):
             animes = Anime.objects.filter(user=self.request.user)
         else:
             animes = Anime.objects.none()
+
         context['animes'] = animes
+
+        # Implement pagination
+        paginator = Paginator(animes, 3)  # Show 3 animes per page
+        page_number = self.request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        # Add the paginated page object to the context
+        context['page_obj'] = page_obj
         return context
 
 

@@ -57,8 +57,8 @@
                 <th><h1>Based on Manga</h1></th>
               </tr>
             </thead>
-              {% if animes %}
-              {% for anime in animes %}
+              {% if page_obj %}
+                {% for anime in page_obj %}
                 <tr class="white-text">
                   <td>{{ anime.eng_name }}</td>
                   <td>{{ anime.director_name }}</td>
@@ -74,21 +74,65 @@
               <tr><td colspan="7">No animes created yet.</td></tr>
             {% endif %}
           </table>
+
           <div class="image-container">
           <img class="logo-right" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/tv.png">
           <button class="centered-button" onclick="location.href='{% url 'create_anime' %}'">Add Anime</button>
         </div>
             </tbody>
         </div>
+    {% if page_obj.has_other_pages %}
+      <div class="pagination-container">
+        <nav aria-label="Pagination">
+          <ul class="pagination">
+            {% if page_obj.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <span class="page-link" aria-disabled="true">&laquo;</span>
+              </li>
+            {% endif %}
 
-      <div class="container1">
+            {% for i in page_obj.paginator.page_range %}
+              {% if page_obj.number == i %}
+                <li class="page-item active" aria-current="page">
+                  <span class="page-link">{{ i }}</span>
+                </li>
+              {% else %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <span class="page-link" aria-disabled="true">&raquo;</span>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    {% endif %}
+
+    <div class="container1">
           <div class="image">
             <img class="logo-left" src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile.png">
           </div>
           <div class="text">
               <h1 class="big-text-center">THIS DATA WILL BE SAVED</h1>
           </div>
-      </div>
+    </div>
 
         {% include "footer.html" %}
   </body>
