@@ -54,7 +54,7 @@ Main functionality:
 
 ![img_2.png](img_2.png)
 
-3. Once logged in, you name will be visible on the top of the website. 
+3. Once logged in, your name will be visible on the top of the website. 
 
 ![img_3.png](img_3.png)
 
@@ -70,7 +70,7 @@ Main functionality:
 
 ![img_6.png](img_6.png)
 
-7. Also, there is search functionality for based on the name, director's name and year of anume. 
+7. Also, there is search functionality based on the name, director's name and year of anume. 
 
 ![img_7.png](img_7.png)
 
