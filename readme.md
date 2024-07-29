@@ -40,3 +40,8 @@ To run the Django development server, navigate to the project directory and run 
 python manage.py runserver
 
 This will start the development server on http://127.0.0.1:8000/.
+
+
+Main functionality: 
+
+1. ![img.png](img.png)
