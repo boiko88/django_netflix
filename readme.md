@@ -44,4 +44,34 @@ This will start the development server on http://127.0.0.1:8000/.
 
 Main functionality: 
 
-1. ![img.png](img.png)
+![img.png](img.png)
+
+1. Sign in. You have to create a profile to use the platform. You don't have to put your real email, as the system doesn't check it. 
+
+![img_1.png](img_1.png)
+
+2. If you don't have a profile, you can click on REGISTER and fill the form. 
+
+![img_2.png](img_2.png)
+
+3. Once logged in, you name will be visible on the top of the website. 
+
+![img_3.png](img_3.png)
+
+4. You can create new animes clicking on the Add Anime button. 
+
+![img_4.png](img_4.png)
+
+5. This is how the form looks like. 
+
+![img_5.png](img_5.png)
+
+6. There is a complete CRUD functionality for these objects. As far as you add more than 3 elements pagination will start working. 
+
+![img_6.png](img_6.png)
+
+7. Also, there is search functionality for based on the name, director's name and year of anume. 
+
+![img_7.png](img_7.png)
+
+8. Moreover, all the changes are saved in a CSV file to track them down if needed. 
