@@ -660,3 +660,39 @@ h2 a{
 .form-group .label {
   margin-right: 10px; /* Add some space between the label and input */
 }
+
+/* Pagination */
+
+.my_pagination {
+  color: #0E1119;
+}
+
+.my_page-item.disabled .my_page-link {
+  color: #FFFFFF;
+  background-color: #808080;
+  pointer-events: none;
+  cursor: default;
+}
+
+.my_page-item:not(.disabled) .my_page-link {
+  color: #FFFFFF;
+  background-color: #808080;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.my_page-item.active .my_page-link {
+  background-color: #FF0000;
+}
+
+.my_page-item:not(.disabled) .my_page-link:hover {
+  background-color: #d4070f; /* Lighter red on hover */
+  color: #FFFFFF; /* Keep text color white */
+}
+
+.my_page-link {
+  font-size: 17px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
